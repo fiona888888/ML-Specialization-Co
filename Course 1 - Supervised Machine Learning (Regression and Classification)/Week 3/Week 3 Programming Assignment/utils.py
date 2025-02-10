@@ -30,7 +30,7 @@ def plot_data(X, y, pos_label="y=1", neg_label="y=0"):
     negative = y == 0
     
     # Plot examples
-    plt.plot(X[positive, 0], X[positive, 1], 'k+', label=pos_label)
+    plt.plot(X[positive, 0], X[positive, 1], 'k+', label=pos_label)  # positive feature 1, 2
     plt.plot(X[negative, 0], X[negative, 1], 'yo', label=neg_label)
     
     
@@ -39,13 +39,15 @@ def plot_decision_boundary(w, b, X, y):
      
     plot_data(X[:, 0:2], y)
     
+
+   # 2 Features (Non-Linear Case)
     if X.shape[1] <= 2:
         plot_x = np.array([min(X[:, 0]), max(X[:, 0])])
         plot_y = (-1. / w[1]) * (w[0] * plot_x + b)
         
         plt.plot(plot_x, plot_y, c="b")
         
-    else:
+    else:  # If X Has More Than 2 Features (Non-Linear Case)
         u = np.linspace(-1, 1.5, 50)
         v = np.linspace(-1, 1.5, 50)
         
